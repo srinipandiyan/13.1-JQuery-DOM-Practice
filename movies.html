@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Tracker</title>
+  <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+<div class="container">
+  <h1 id="welcome">Movies Web App</h1>
+
+  <form id="form">
+        <label for="title">Movie Title:</label><br>
+            <input type="text" id="title" name="movieTitle" maxlength="28" size="28"><br><br>
+        <label for="rating">Movie Rating:</label><br>
+            <input type="text" id="rating" name="movieRating" maxlength=28 size="28"><br><br>
+            
+        <input type="submit" value="Generate" id="button"><br><br>
+    </form>
+
+    <section class="submissions">
+        <ul></ul>
+    </section>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+  // Add your code here!
+    $("#form").on('submit', function(e) {
+        e.preventDefault();
+        let $title = $('#title').val();
+        let $rating = $('#rating').val();
+        let deleteButton = '<button type="button">x</button>'
+        $(".submissions ul").append("<li>" + deleteButton + " " + $title + " (" + $rating + ")</li>");
+    });
+
+    $(".submissions ul").on('click', 'button', function() {
+        $(this).parent('li').remove();
+    });
+
+    $(".submissions ul").css("list-style", "none");
+
+</script>
+</body>
+
+</html>
